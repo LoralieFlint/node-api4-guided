@@ -1,4 +1,7 @@
 const express = require("express")
+// less safe
+// const dotenv = require("dotenv")
+// dotenv.config()
 
 const app = express()
 const host = "0.0.0.0"
@@ -12,9 +15,12 @@ app.use((req, res, next) => {
 app.get("/", (req, res) => {
 	res.json({
 		message: "Welcome to our API",
+		cohort: process.env.LAMBDA_COHORT,
 	})
 })
 
 app.listen(port, host, () => {
 	console.log(`Running at http://${host}:${port}`)
 })
+
+// node-api4-guided
